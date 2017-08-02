@@ -1,0 +1,77 @@
+/**
+ * Part 2
+ * 
+ * In this file, we're going to create some 
+ * Functions to work with our data created in
+ * data.js.
+ * 
+ * See the README for detailed instructions, 
+ * and read every instruction carefully.
+ */
+
+//////////////////////////////////////////////////////////////////////
+// Step 1 - Search ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+function search(animals, name){
+    for(var i = 0; i <= animals.length; i++){
+        if(name === animals[i].name){
+            return animals[i];
+        }
+    }return null;
+    
+}
+
+//////////////////////////////////////////////////////////////////////
+// Step 2 - Replace //////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function replace(animals, name, replacement){
+    var animalReplace = search(animals, name);
+    if(animalReplace !== null){
+    animals.splice(animals.indexOf(animalReplace), 1, replacement);
+}   
+    
+}
+
+//////////////////////////////////////////////////////////////////////
+// Step 3 - Remove ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+function remove (animals, name){
+  var m = search(animals, name);
+   if(m !== null){
+  animals.splice(animals.indexOf(m), 1);
+ 
+        
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////
+// Step 4 - Create ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+function add (animals, animal) {
+   
+      console.log(animal);
+        
+if(animal['name'].length > 0 && animal['species'].length > 0 && search(!animals, !animal['name'])){   
+    animals.push(animal);
+
+}
+}
+
+/** 
+ * You did it! You're all done with Matchy!
+ */
+ 
+ 
+ 
+//////////////////////////////////////////////////////////////////////
+// DON'T REMOVE THIS CODE ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+if((typeof process !== 'undefined') &&
+   (typeof process.versions.node !== 'undefined')) {
+    module.exports.search = search;
+    module.exports.replace = replace;
+    module.exports.remove = remove;
+    module.exports.add = add;
+}
