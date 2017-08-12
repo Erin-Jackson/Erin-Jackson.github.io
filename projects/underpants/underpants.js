@@ -119,7 +119,7 @@ _.last = function(array, number){
   } else if(number >= array.length){
       return array;
   }  else { 
-        return array.slice();
+        return array.slice(-number);
   }
 };
 
@@ -200,7 +200,7 @@ _.filter= function(array, action){
      }
    });
    return result;
-}
+};
 /** _.reject()
 * Arguments:
 *   1) An array
@@ -243,13 +243,15 @@ var result = [];
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-_.partition = function(array, action){
-  return _.filter + _.reject;
+_.partition = function(array, func){
+    var newArray =[];
+    var pass = _.filter(array, func);
+    var fail= _.reject(array, func);
+    newArray.push(pass);
+    newArray.push(fail);
+    return newArray;
     
 };
-     
-  
-
 
 /** _.unique()
 * Arguments:
@@ -260,7 +262,14 @@ _.partition = function(array, action){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function(array){
+ var newArray = [];
+_.each(array, function(element, index, array) {
+    if(_.indexOf(newArray, element) === -1){
+        newArray.push(element);
+    } return newArray;
+});
+};
 
 /** _.map()
 * Arguments:
@@ -277,8 +286,13 @@ _.partition = function(array, action){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
-
+_.map = function (array, func){
+      var newArray = [];
+        _.each(array, function(element, index, array) {
+       newArray.push(func(element, index, array));
+  }); return newArray;
+    
+};
 /** _.pluck()
 * Arguments:
 *   1) An array of objects
@@ -289,7 +303,15 @@ _.partition = function(array, action){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function(objArr, prop){
+   var newArray = [];
+    _.map(objArr, function(element, index, objArr){
+       
+     newArray.push(element[prop]);
+      
+    }); return newArray;
 
+};
 
 /** _.contains()
 * Arguments:
@@ -305,7 +327,9 @@ _.partition = function(array, action){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array,value){
+    return _.indexOf(array,value) > -1 ? true : false;
+};
 
 /** _.every()
 * Arguments:
@@ -327,7 +351,11 @@ _.partition = function(array, action){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(array, func){
+   _.each(array, function(element, index, array){
+  
+   });            
+};
 
 /** _.some()
 * Arguments:
@@ -349,7 +377,13 @@ _.partition = function(array, action){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function(array, func){
+     _.each(array, function(element, index, array) {
+      if(function(element, index, array){
+         
+      }); return true;
+     });        
+};
 
 /** _.reduce()
 * Arguments:
@@ -369,7 +403,17 @@ _.partition = function(array, action){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function ( array, func, seed){
+     _.each(array, function(e, i, c) {
+    if(seed === undefined){
+        seed = array[0];
+    }else {
+ 
+     seed = func(seed, e, i);   
+    }
+    });
+    return seed;
+};
 
 /** _.extend()
 * Arguments:
@@ -385,7 +429,13 @@ _.partition = function(array, action){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function (object1, object2){
+ var newObject = {};
 
+ for (var i,keys = Object.keys(object1); i < keys.length; i ++){
+     object2[keys[i]] = object1[keys[i]];
+ }
+    };
 
 // This is the proper way to end a javascript library
 }());
