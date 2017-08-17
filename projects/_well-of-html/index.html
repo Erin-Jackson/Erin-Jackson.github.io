@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/notes/notes.js"></script>
+    <title>A Well of HTML</title>
+    <style type="text/css">
+        form{
+           margin:310px;
+           width: 200px;
+           padding: 2em;
+           border: 2px solid #443;
+           border-radius: 2em;
+            
+           
+           
+ 
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <!-- ALL YOUR MARKUP GOES BELOW HERE -->
+        <a href="https://en.wikipedia.org/wiki/Music">Music Article</a>
+        <img src="img/cherries.jpg" />
+        <h1>This is my header!</h1>
+        <h2><small>And another one!</small></h2>
+        <h3>You can have up to 6 headers!</h3>
+        <h4>The writing just gets smaller.</h4>
+        <h5>But the header is important.</h5>
+        <h6>All the heaers.</h6>
+        
+        <p> <strong>This shows how to create a paragraph tag.</strong> <em>Whatever you write within this tag will appear as a paragraph.</em> We are learning to do various things using html like adding <b>html tags</b> and <i>css styling</i></p>
+        
+        <br>
+        <h3>Things I enjoy</h3>
+        <ul>
+           <li>Music</li>
+           <li>Writing</li>
+           <li>Travel</li>
+           <li>Animals</li>
+        </ul>
+        
+        <br>
+        <h3>Fun Facts about me:</h3>
+        <ol>
+            <li>My Birthday is August 4.</li>
+            <li>I was born and raised in New Orleans.</li>
+            <li>I've lived in three different states.</li>
+            <li>I enjoy being around water even though I'm not a good swimmer. </li>
+            <br>
+            <dl>
+       <h4>Facts about where I'm from</h4>         
+  <dt>New Orleans is often hot and we don't experience much of the seasons.</dt>
+  <dd>It's either hot or cold</dd>
+  <dt>Sno-La</dt>
+  <dd>Is the best snowball place in the city in my opinion.</dd>
+  <dt>Mardi Gras is not all there is to New Orleans</dt>
+  <dd>There is so much culture and life in this city and the people. When most people come they end up loving it here.</dd>
+</dl>
+<br>
+<div style="width: 100%;">
+   <div style="float:left; width: 80%">
+   </div>
+   <div style="float:right;">
+   </div>
+</div>
+<div style="clear:both"></div>
+        <form action="/my-handling-form-page" method="post">
+          
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name">
+    </div>
+    <div>
+        <label for="mail">Email:</label>
+        <input type="email" id="email" name="user_email">
+    </div>
+    <div>
+        <label for="mail">Hometown:</label>
+        <input type="email" id="location" name="user_location">
+    </div>
+    <div>
+        <label for="msg">Message:</label>
+        <textarea id="msg" name="user_message"></textarea>
+    </div>
+      <div class="button">
+        <button type="submit">Send your message</button>
+    </div>
+</form>    
+            
+        </ol>
+        
+        <table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="2">Names of students in class of 2020...</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Bob</td>
+            <td>Harrison</td>
+        </tr>
+        <tr>
+            <td>Judy</td>
+            <td>Dorsy</td>
+        </tr>
+    </tbody>
+</table>
+        
+        <!-- ALL YOUR MARKUP GOES ABOVE HERE -->
+    </div>
+    <script>
+        $(function () {
+            window.opspark.notes.show();
+        });
+    </script>
+</body>
+
+</html>

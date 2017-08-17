@@ -263,12 +263,13 @@ _.partition = function(array, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 _.unique = function(array){
- var newArray = [];
-_.each(array, function(element, index, array) {
-    if(_.indexOf(newArray, element) === -1){
-        newArray.push(element);
-    } return newArray;
-});
+    var newArray = [];
+    _.each(array, function(element, index, array) {
+        if(_.indexOf(newArray, element) === -1){
+            newArray.push(element);
+        }
+    });
+    return newArray;
 };
 
 /** _.map()
@@ -351,11 +352,31 @@ _.contains = function(array,value){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-_.every = function(array, func){
-   _.each(array, function(element, index, array){
-  
-   });            
+_.every = function(collection, func){
+   
+    var result = true;
+    if(Array.isArray(collection)){
+        for(var i= 0; i < collection.length; i++){
+            if(func){
+                result = result && func(collection[i], i, collection);
+            } else {
+                result = result && collection[i];
+            }
+        }
+    } else {
+        for(var key in collection){
+            if(func){
+                result = result && func(collection[key], key, collection);
+            } else {
+                result = result && collection[key];
+            }
+        }
+    } 
+    return Boolean(result);
+    
+    
 };
+
 
 /** _.some()
 * Arguments:
@@ -377,13 +398,28 @@ _.every = function(array, func){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-_.some = function(array, func){
-     _.each(array, function(element, index, array) {
-      if(function(element, index, array){
-         
-      }); return true;
-     });        
-};
+_.some = function(collection, func){
+    
+  var result = false;
+    if(Array.isArray(collection)){
+        for(var i= 0; i < collection.length; i++){
+            if(func){
+                result = result || func(collection[i], i, collection);
+            } else {
+                result = result || collection[i];
+            }
+        }
+    } else {
+        for(var key in collection){
+            if(func){
+                result = result || func(collection[key], key, collection);
+            } else {
+                result = result || collection[key];
+            }
+        }
+    } 
+    return Boolean(result);
+     };
 
 /** _.reduce()
 * Arguments:
@@ -429,13 +465,17 @@ _.reduce = function ( array, func, seed){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-_.extend = function (object1, object2){
- var newObject = {};
-
- for (var i,keys = Object.keys(object1); i < keys.length; i ++){
-     object2[keys[i]] = object1[keys[i]];
- }
-    };
+_.extend = function (objects){
+    console.log(arguments);
+    var source;
+    for (var j=0; j < arguments.length; j++){
+        source = arguments[j];
+        for (var i=0, keys = Object.keys(source); i < keys.length; i++){
+            objects[keys[i]] = source[keys[i]];
+        }
+    }
+    return objects;
+};
 
 // This is the proper way to end a javascript library
 }());
