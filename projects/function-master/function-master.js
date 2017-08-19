@@ -4,50 +4,116 @@ function objectValues (object){
     return values;
 }
 
-
-//keysToString() : Should take an object and return all its keys in a string each separated with a space 
 function keysToString (object){
-    Object.keys(object).join(' ');
- return object;
+  var keys = Object.keys(object);
+  return keys.join(' ');
 }
 
-
-//valuesToString() : Should take an object and return all its string values in a string each separated with a space
 function valuesToString (object){
-  Object.keys(object).concat(' ')
-  return object;
+ var newArray =[];
+    for(var key in object){
+     if (typeof object[key] === "string"){
+         newArray.push(object[key]);
+     }
+    }return newArray.join(' ');
 }
 
 function arrayOrObject(argument){
     if(Array.isArray(argument)){
-    return 'array';
+        return 'array';
     } else if (typeof argument === 'object') {
         return 'object';
     }   
 }
 
-//capitalizeWord() : Should take a string of one word, and return the word with its first letter capitalized 
 function capitalizeWord(string){
-    string.toUpperCase(string[0]);
-return string;
+   
+return string.charAt(0).toUpperCase() + string.substring(1, string.length).toLowerCase();
 }
 
-//capitalizeAllWords() : Should take a string of words and return a string with all the words capitalized
-function capitalizeAllWords (string){
+
+function capitalizeAllWords(arg) {
+   var wordArray = arg.split(" ");
+   var capWordArray = [];
+   for (var i = 0; i < wordArray.length; i++) {
+       var caps = wordArray[i].charAt(0).toUpperCase() + wordArray[i].substring(1);
+       capWordArray.push(caps);
+   }
+   var newCapString = capWordArray.join(" ");
+   return newCapString;
+}
     
+
+
+
+   function welcomeMessage(arg) {
+   var name = arg["name"].charAt(0).toUpperCase() + arg["name"].substring(1);
+   return "Welcome " + name + "!";  
+   }
+
+   
+function profileInfo(arg) {
+   var name = arg["name"].charAt(0).toUpperCase() + arg["name"].substring(1);
+   var species = arg["species"].charAt(0).toUpperCase() + arg["species"].substring(1);
+   return name + " is a " + species;
+}
+
+function maybeNoises(arg) {
+   if (Object.keys(arg).length === 0) {
+   return "there are no noises";
+   } else if (arg["noises"].length > 1) {
+       return arg["noises"].join(" ");
+   } else if (arg["noises"].length === 0) {
+   return "there are no noises";
+   }   
 }
 
 
-//welcomeMessage() : Should take an object with a name property and return 'Welcome <Name>!
-function welcomeMessage(object){
-    var names = object.name;
-    return 'Welcome' + names + '!';
-}
-
-//profileInfo() : Should take an object with a name an a species and return '<Name> is a <Species>
-function profileInfo(object){
-    
+function hasWord (string,word){
+    if (string.includes(word)){
+        return true;
+    }   else {
+        return false;
+    }
 }
 
 
-//maybeNoises() : Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises' 
+function addFriend (name, object){
+    object.friends.push(name);
+    return object;
+}
+
+
+function isFriend(name, obj) {
+   if (Object.keys(obj).length < 1) {
+       return false;
+   } else if (Object.keys(obj).length > 0) {
+       for (var i = 0; i < obj["friends"].length; i++) {
+           if (obj["friends"][i] === name) {
+               return true;
+           }
+       }
+       return false;
+   }
+}
+
+//nonFriends() : Should take a name and a list of people, and return a list of all the names that <name> is not friends with
+
+
+
+function updateObject(obj, key, val) {
+   obj[key] = val;
+   return obj;
+}
+
+
+//removeProperties() : Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array> (1, 0, 1)
+
+
+
+function dedup(data) {
+   var dedupSet = new Set(data);
+   var dedupArray = Array.from(dedupSet);
+   return dedupArray;
+}
+ 
