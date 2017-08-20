@@ -98,7 +98,15 @@ function isFriend(name, obj) {
 }
 
 //nonFriends() : Should take a name and a list of people, and return a list of all the names that <name> is not friends with
-
+function nonFriends (name, list) {
+  var result = [];
+  for (var i = 0; i <= list.length; i++) {
+    if (!isFriend(name, list[i]) && list[i].name !== name) {
+      result.push(list[i].name);
+    }
+  }
+  return result;
+}
 
 
 function updateObject(obj, key, val) {
@@ -107,8 +115,15 @@ function updateObject(obj, key, val) {
 }
 
 
-//removeProperties() : Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array> (1, 0, 1)
-
+function removeProperties(object, array) {
+    for (var i = 0; i <= array.length; i++) {
+        for (var key in object) {
+            if (key === array[i]) {
+                delete object[key];
+            }
+        }
+    } return object;
+}
 
 
 function dedup(data) {
